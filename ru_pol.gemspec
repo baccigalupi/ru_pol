@@ -26,11 +26,15 @@ Gem::Specification.new do |s|
     ".document",
     ".rspec",
     "Gemfile",
+    "Gemfile.lock",
     "LICENSE.txt",
     "README.rdoc",
     "Rakefile",
     "VERSION",
+    "lib/pool.rb",
     "lib/ru_pol.rb",
+    "ru_pol.gemspec",
+    "spec/pool_spec.rb",
     "spec/ru_pol_spec.rb",
     "spec/spec_helper.rb"
   ]
