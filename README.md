@@ -67,13 +67,13 @@ The RuPol module can just be included into your class:
 
 Instance convenience methods added to the class will be:
 
-* #recycle - This will clear your instance, provided a #clear method exists, and then stash it in the instance pool
+* recycle - This will clear your instance, provided a #clear method exists, and then stash it in the instance pool
 
 Class methods added for convenience include:
 
-* #max&#95;pool_size - Can be used after including the module in order to configure the size limit on the pool
-* #empty_pool - Clears the pool and related stats
-* #rehydrade - Get an instance from the pool and initialize it with arguments
+* max&#95;pool_size - Can be used after including the module in order to configure the size limit on the pool
+* empty_pool - Clears the pool and related stats
+* rehydrade - Get an instance from the pool and initialize it with arguments
 
 Including the RuPol module itself means that you do all the heavy lifting of using the pool. If you want coding life a little simpler, then use the RuPol::Swimsuit edition module instead. It overrides #new and #destroy, so that you can just use the pool in the normal lifecycle of an object.
 
