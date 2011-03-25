@@ -15,14 +15,18 @@ Jeweler::Tasks.new do |gem|
   gem.name = "ru_pol"
   gem.homepage = "http://github.com/baccigalupi/ru_pol"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{RuPol is a glamorous mixin for instance pooling your Ruby classes}
+  gem.description = %Q{RuPol is a glamorous mixin for instance pooling your Ruby classes. 
+    It eases the pain of garbarge collection for classes that are instantiated many times, and then tossed away like runway trash.
+    Instances are cached on the class in a pool (array in less glamorous terms), and can be recycled at will. 
+    Of course there is no pain without gain, and models will trade collection costs for memory usages.
+    The Swimsuit mixin edition overrides #new and #destroy, for a virtually pain free instance swimming experience.
+    Runway not included. 
+  }
   gem.email = "baccigalupi@gmail.com"
   gem.authors = ["Kane Baccigalupi"]
-  # Include your dependencies below. Runtime dependencies are required when using your gem,
-  # and development dependencies are only needed for development (ie running rake tasks, tests, etc)
+  
   #  gem.add_runtime_dependency 'jabber4r', '> 0.1'
-  #  gem.add_development_dependency 'rspec', '> 1.2.3'
 end
 Jeweler::RubygemsDotOrgTasks.new
 
