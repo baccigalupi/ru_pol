@@ -73,7 +73,7 @@ Class methods added for convenience include:
 
 * max&#95;pool_size - Can be used after including the module in order to configure the size limit on the pool
 * empty_pool - Clears the pool and related stats
-* rehydrade - Get an instance from the pool and initialize it with arguments
+* rehydrate - Get an instance from the pool and initialize it with arguments
 
 Including the RuPol module itself means that you do all the heavy lifting of using the pool. If you want coding life a little simpler, then use the RuPol::Swimsuit edition module instead. It overrides #new and #destroy, so that you can just use the pool in the normal lifecycle of an object.
 

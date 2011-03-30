@@ -70,7 +70,7 @@ module RuPol
     
     module ClassMethods
       def new(*init_opts)
-        rehydrate || ( init_opts.empty? ? super() : super(*init_opts) )
+        rehydrate(*init_opts) || ( init_opts.empty? ? super() : super(*init_opts) )
       end
     end
   end

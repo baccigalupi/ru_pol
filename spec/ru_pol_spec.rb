@@ -201,5 +201,76 @@ describe RuPol do
         Irreplacable._pool.should include instance
       end
     end
+  
+    describe 'new' do
+      class Inity1 
+        include RuPol::Swimsuit
+        
+        attr_accessor :arg_1
+        
+        def initialize(arg_1)
+          self.arg_1 = arg_1
+        end
+      end
+      
+      class Inity2 < Inity1
+        include RuPol::Swimsuit
+        attr_accessor :arg_2
+        
+        def initialize(arg_1, arg_2)
+          super(arg_1)
+          self.arg_2 = arg_2
+        end
+      end
+      
+      before do
+        Irreplacable.empty_pool!
+        Inity1.empty_pool!
+        Inity2.empty_pool!
+      end
+      
+      describe 'pass thru to init' do
+        it 'works when there are no arguments' do
+          Irreplacable.new
+        end
+        
+        it 'works with one argument' do
+          Inity1.new(:foo).arg_1.should == :foo
+        end
+        
+        it 'works with many arguments' do
+          i = Inity2.new(:bar, :foo)
+          i.arg_1.should == :bar
+          i.arg_2.should == :foo
+        end
+      end
+      
+      describe 'rehydrating' do
+        before do
+          [
+            @irr = Irreplacable.new,
+            @init1 = Inity1.new(:foo),
+            @init2 = Inity2.new(:bar, :foo)
+          ].map{|i| i.destroy }
+          Irreplacable._pool.size.should == 1
+          Inity1._pool.size.should == 1
+          Inity2._pool.size.should == 1
+        end
+        
+        it 'works when there are no arguments' do
+          Irreplacable.new
+        end
+        
+        it 'works with one argument' do
+          Inity1.new(:foo).arg_1.should == :foo
+        end
+        
+        it 'works with many arguments' do
+          i = Inity2.new(:bar, :foo)
+          i.arg_1.should == :bar
+          i.arg_2.should == :foo
+        end
+      end
+    end
   end
 end
