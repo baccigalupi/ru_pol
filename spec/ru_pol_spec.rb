@@ -245,6 +245,35 @@ describe RuPol do
         end
       end
       
+      describe 'blocks' do
+        class Blocky
+          attr_accessor :has_block
+          include RuPol::Swimsuit
+          def initialize(&block)
+            self.has_block = block_given?
+          end
+        end
+        
+        before do
+          Blocky.empty_pool!
+        end
+        
+        it 'passes the block along on a brand new object' do
+          blocky = Blocky.new { "oh yes, it is!" }
+          blocky.has_block.should be_true
+        end
+        
+        it 'passes the block to recycled items on reinit' do
+          blocky = Blocky.new { "first run" }
+          blocky.has_block.should be_true
+          blocky.recycle
+          blocky.has_block.should be_nil
+          
+          new_blocky = Blocky.new { "and again" }
+          new_blocky.has_block.should be_true
+        end
+      end
+      
       describe 'rehydrating' do
         before do
           [

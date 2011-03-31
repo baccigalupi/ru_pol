@@ -24,10 +24,10 @@ module RuPol
       _pool.empty!
     end
     
-    def rehydrate(*init_opts)
+    def rehydrate(*init_opts, &block)
       instance = _pool.get
       if instance
-        instance.instance_eval { init_opts.empty? ? initialize : initialize(*init_opts) }
+        instance.instance_eval { init_opts.empty? ? initialize(&block) : initialize(*init_opts, &block) }
       end
       instance
     end
@@ -69,8 +69,8 @@ module RuPol
     end
     
     module ClassMethods
-      def new(*init_opts)
-        rehydrate(*init_opts) || ( init_opts.empty? ? super() : super(*init_opts) )
+      def new(*init_opts, &block)
+        rehydrate(*init_opts, &block) || ( init_opts.empty? ? super() : super(*init_opts) )
       end
     end
   end
