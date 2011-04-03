@@ -13,7 +13,11 @@ module RuPol
   
   module ClassMethods
     def _pool
-      @pool ||= Pool.new(1000, self)
+      @pool ||= Pool.new(default_pool_size, self)
+    end
+    
+    def default_pool_size
+      superclass.respond_to?(:_pool) ? superclass._pool.max_size : 1000
     end
     
     def max_pool_size(max_size)

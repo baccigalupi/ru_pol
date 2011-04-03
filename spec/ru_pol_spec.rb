@@ -26,6 +26,19 @@ describe RuPol do
       Irreplacable._pool.max_size.should == 1000
     end
     
+    it 'sets the default size to the size of it superclass if it has one' do
+      class BigPool
+        include RuPol::Swimsuit
+        max_pool_size 10000
+      end
+      
+      BigPool._pool.max_size.should == 10000
+      
+      class BigPoolDescendant < BigPool; end
+      
+      BigPoolDescendant._pool.max_size.should == 10000
+    end
+    
     it 'pool max size is settable via the #max_pool_size class method' do
       Irreplacable.max_pool_size 42
       Irreplacable._pool.max_size.should == 42
