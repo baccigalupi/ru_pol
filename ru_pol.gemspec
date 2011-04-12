@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{ru_pol}
-  s.version = "0.1.1"
+  s.version = "0.1.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Kane Baccigalupi"]
-  s.date = %q{2011-03-30}
+  s.date = %q{2011-04-12}
   s.description = %q{RuPol is a glamorous mixin for instance pooling your Ruby classes. 
     It eases the pain of garbarge collection for classes that are instantiated many times, and then tossed away like runway trash.
     Instances are cached on the class in a pool (array in less glamorous terms), and can be recycled at will. 
